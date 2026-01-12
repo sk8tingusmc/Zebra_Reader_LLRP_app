@@ -139,7 +139,7 @@ const updatePowerDisplay = () => {
 // Antenna buttons
 const renderAntennaButtons = () => {
   antennaGroup.textContent = '';
-  for (let i = 1; i <= 4; i += 1) {
+  for (let i = 1; i <= 8; i += 1) {
     const btn = document.createElement('button');
     btn.className = `btn antenna${antennaSelection.has(i) ? ' active' : ''}`;
     btn.textContent = String(i);

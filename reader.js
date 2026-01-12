@@ -27,6 +27,10 @@ const CONFIG = {
         2: 30,    // Antenna 2: 30 dBm
         3: 30,    // Antenna 3: 30 dBm
         4: 30,    // Antenna 4: 30 dBm
+        5: 30,    // Antenna 5: 30 dBm
+        6: 30,    // Antenna 6: 30 dBm
+        7: 30,    // Antenna 7: 30 dBm
+        8: 30,    // Antenna 8: 30 dBm
     },
     reconnectInterval: 5000,  // ms between reconnect attempts
     enableReconnect: true,

@@ -194,7 +194,7 @@ const server = http.createServer((req, res) => {
             try {
                 const parsed = JSON.parse(body || '{}');
                 const antennas = Array.isArray(parsed.antennas)
-                    ? parsed.antennas.map(Number).filter((n) => Number.isInteger(n) && n >= 1 && n <= 4)
+                    ? parsed.antennas.map(Number).filter((n) => Number.isInteger(n) && n >= 1 && n <= 8)
                     : null;
                 const nextPower = typeof parsed.powerDbm === 'number' ? parsed.powerDbm : null;
                 updateConfig(antennas, nextPower);
