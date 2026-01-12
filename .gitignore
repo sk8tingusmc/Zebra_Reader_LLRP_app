@@ -1,0 +1,12 @@
+# Logs
+*.log
+
+# Temp files
+tmpclaude-*
+
+# Node modules (if any)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db

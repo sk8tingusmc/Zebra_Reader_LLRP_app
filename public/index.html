@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>RFID Tag Monitor - Zebra FX9600</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <h1>
+          <span class="icon">RF</span>
+          RFID Tag Monitor
+        </h1>
+        <div class="status-indicator">
+          <span class="status-dot" id="statusDot"></span>
+          <span id="statusText">Disconnected</span>
+        </div>
+      </header>
+
+      <div class="control-panel">
+        <div class="control-row">
+          <div class="control-group">
+            <button id="startBtn" class="btn primary">Start Reading</button>
+            <button id="stopBtn" class="btn danger" disabled>Stop</button>
+            <button id="clearBtn" class="btn ghost">Clear Data</button>
+          </div>
+        </div>
+        <div class="control-row">
+          <div class="control-group">
+            <span class="control-label">Power:</span>
+            <button id="powerBtn" class="btn">
+              <span id="powerDisplay">30.0 dBm</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <span class="control-label">Antennas:</span>
+            <div class="antenna-group" id="antennaGroup"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card highlight">
+          <div class="label">Unique Tags</div>
+          <div class="value" id="totalTags">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Total Reads</div>
+          <div class="value" id="totalReads">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Reads/sec</div>
+          <div class="value" id="readsPerSec">0.0</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Elapsed Time</div>
+          <div class="value timer" id="timer">00:00:00</div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <div class="table-header">
+          <h2>Tag Inventory</h2>
+          <span id="tagCount">0 tags</span>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>EPC</th>
+                <th>Read Count</th>
+                <th>RSSI (dBm)</th>
+                <th>Antenna</th>
+                <th>Last Seen</th>
+              </tr>
+            </thead>
+            <tbody id="tagBody">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="powerModal" aria-hidden="true">
+      <div class="modal-card">
+        <h2>TX Power Level</h2>
+        <p>Adjust transmit power for all active antennas</p>
+        <div class="slider-container">
+          <div class="slider-row">
+            <input id="powerSlider" type="range" min="10" max="30" step="0.5" value="30" />
+            <div class="slider-value" id="powerValue">30.0 dBm</div>
+          </div>
+          <div class="slider-labels">
+            <span>10 dBm (Low)</span>
+            <span>30 dBm (Max)</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button id="powerCancel" class="btn ghost">Cancel</button>
+          <button id="powerApply" class="btn primary">Apply</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
