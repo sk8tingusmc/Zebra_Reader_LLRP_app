@@ -235,10 +235,17 @@ server.listen(PORT, () => {
 });
 
 // Graceful shutdown
-process.on('SIGINT', () => {
+let shuttingDown = false;
+const shutdown = () => {
+    if (shuttingDown) return;
+    shuttingDown = true;
     console.log('\nShutting down...');
     stopReader();
     server.close(() => {
         process.exit(0);
     });
-});
+    setTimeout(() => process.exit(0), 1000);
+};
+
+process.on('SIGINT', shutdown);
+process.on('SIGTERM', shutdown);
